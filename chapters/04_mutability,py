@@ -1,0 +1,54 @@
+"""
+04_mutability.py
+
+Some values can change.
+Some cannot.
+
+Understanding this distinction is critical.
+"""
+
+# Immutable values (numbers, strings, tuples)
+
+a = 10
+b = a
+
+a = 20
+
+print(a)  # 20
+print(b)  # 10
+
+
+# --- Mutable values (lists, dicts) -----------------------------------
+
+numbers = [1, 2, 3]
+alias = numbers
+
+numbers.append(4)
+
+print(numbers)  # [1, 2, 3, 4]
+print(alias)    # [1, 2, 3, 4]
+
+
+# --- Why this is dangerous -------------------------------------------
+#
+# Two names can refer to the SAME object.
+# A change through one name affects the other.
+
+
+# --- Making copies ---------------------------------------------------
+
+original = [1, 2, 3]
+copy = original.copy()
+
+original.append(4)
+
+print(original)  # [1, 2, 3, 4]
+print(copy)      # [1, 2, 3]
+
+
+# --- Rule of thumb ---------------------------------------------------
+#
+# If something can change, ask:
+#   - Who else can see this change?
+#
+# Many bugs are shared-state bugs.
